@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Настройки для правильного скролла в Telegram Mini App */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* Цвет фона совпадает с темой приложения, чтобы не было белых вспышек */
+  background-color: #0f172a;
+  /* Отключаем системный "отскок" (bounce effect), который показывает белый фон */
+  overscroll-behavior-y: none;
+}
+
+body {
+  /* Разрешаем вертикальный скролл, если контент (сигналы) не помещается */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  /* Минимальная высота — весь экран, но может расти вниз */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Кастомный скроллбар (опционально, чтобы выглядело аккуратнее) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
